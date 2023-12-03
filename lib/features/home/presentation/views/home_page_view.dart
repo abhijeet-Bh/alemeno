@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                   childAspectRatio: 140 / 160,
                   crossAxisCount: 2, // number of items in each row
                   mainAxisSpacing: 14.0, // spacing between rows
-                  crossAxisSpacing: 14.0, // spacing between columns
+                  crossAxisSpacing: 31.0, // spacing between columns
                 ), // padding around the grid
                 itemCount: 4, // total number of items
                 itemBuilder: (context, index) {

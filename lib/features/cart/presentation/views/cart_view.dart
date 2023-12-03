@@ -1,13 +1,32 @@
 import 'package:alemeno/features/cart/presentation/views/date_time_view.dart';
+import 'package:alemeno/utils/cart_service.dart';
 import 'package:alemeno/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../utils/assets.dart';
 
-class CartView extends StatelessWidget {
+class CartView extends StatefulWidget {
   static String routeName = 'cart=page';
   const CartView({super.key});
+
+  @override
+  State<CartView> createState() => _CartViewState();
+}
+
+class _CartViewState extends State<CartView> {
+  DateTime? selctedDate;
+  CartService _cartService = CartService();
+
+  void _picDateTime() async {
+    await Navigator.pushNamed(context, DateTimeView.routeName);
+
+    // Update the state or perform any refresh logic when PageB is popped
+    setState(() {
+      // selctedDate = result as DateTime;
+      // debugPrint(selctedDate?.toLocal().toString().split(' ')[0]);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -237,6 +256,7 @@ class CartView extends StatelessWidget {
                             ),
                             Expanded(
                               child: InkWell(
+                                onTap: _picDateTime,
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
@@ -246,18 +266,19 @@ class CartView extends StatelessWidget {
                                       width: 0.5,
                                     ),
                                   ),
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
                                     child: Text(
-                                      "Select date",
+                                      "${_cartService.getDate} (${_cartService.getTime})" ??
+                                          "Select date",
                                       style: TextStyle(
-                                        color: Colors.grey,
+                                        color: (_cartService.getDate != null)
+                                            ? AppTheme.primaryColor
+                                            : Colors.grey,
                                       ),
                                     ),
                                   ),
                                 ),
-                                onTap: () => Navigator.pushNamed(
-                                    context, DateTimeView.routeName),
                               ),
                             )
                           ],
@@ -384,7 +405,7 @@ class CartView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Checkbox(
-                              shape: CircleBorder(),
+                              shape: const CircleBorder(),
                               value: true,
                               onChanged: (val) {},
                             ),
