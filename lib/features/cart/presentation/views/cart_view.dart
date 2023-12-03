@@ -1,3 +1,4 @@
+import 'package:alemeno/features/cart/presentation/views/date_time_view.dart';
 import 'package:alemeno/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -255,7 +256,8 @@ class CartView extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                onTap: () {},
+                                onTap: () => Navigator.pushNamed(
+                                    context, DateTimeView.routeName),
                               ),
                             )
                           ],

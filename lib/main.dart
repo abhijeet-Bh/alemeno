@@ -1,4 +1,5 @@
 import 'package:alemeno/features/cart/presentation/views/cart_view.dart';
+import 'package:alemeno/features/cart/presentation/views/date_time_view.dart';
 import 'package:alemeno/utils/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomePage.routeName: (_) => const HomePage(),
         CartView.routeName: (_) => const CartView(),
+        DateTimeView.routeName: (_) => const DateTimeView(),
       },
     );
   }
