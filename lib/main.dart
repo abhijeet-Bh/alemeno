@@ -1,3 +1,4 @@
+import 'package:alemeno/features/cart/presentation/views/cart_view.dart';
 import 'package:alemeno/utils/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
-      initialRoute: '/',
+      initialRoute: HomePage.routeName,
       routes: {
-        '/': (_) => const HomePage(),
+        HomePage.routeName: (_) => const HomePage(),
+        CartView.routeName: (_) => const CartView(),
       },
     );
   }

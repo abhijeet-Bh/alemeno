@@ -1,3 +1,4 @@
+import 'package:alemeno/features/cart/presentation/views/cart_view.dart';
 import 'package:alemeno/features/home/presentation/widgets/testcard_widget.dart';
 import 'package:alemeno/utils/assets.dart';
 import 'package:alemeno/utils/theme.dart';
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text("LOGO"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, CartView.routeName),
             icon: SvgPicture.asset(Assets.cartIcon),
           ),
         ],
