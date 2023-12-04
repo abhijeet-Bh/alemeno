@@ -1,3 +1,4 @@
+import 'package:alemeno/features/home/domain/entities/test_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -5,7 +6,8 @@ import '../../../../utils/assets.dart';
 import '../../../../utils/theme.dart';
 
 class TestCardWidget extends StatefulWidget {
-  const TestCardWidget({super.key});
+  final TestEntity test;
+  const TestCardWidget({super.key, required this.test});
 
   @override
   State<TestCardWidget> createState() => _TestCardWidgetState();
@@ -33,7 +35,7 @@ class _TestCardWidgetState extends State<TestCardWidget> {
             ),
             child: Center(
               child: Text(
-                "Thyroid Profile",
+                widget.test.title,
                 style: AppTheme.primaryBodyTextSmall.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -61,8 +63,8 @@ class _TestCardWidgetState extends State<TestCardWidget> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          "Includes 3 tests",
+                        Text(
+                          "Includes ${widget.test.numberOfTests} tests",
                           style: AppTheme.primaryBodyTextMediumBlue,
                         ),
                         const SizedBox(
@@ -86,11 +88,11 @@ class _TestCardWidgetState extends State<TestCardWidget> {
                     const SizedBox(
                       height: 8,
                     ),
-                    const Column(
+                    Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Get reports in 24 hours",
                           style: TextStyle(
                             color: AppTheme.primaryColor,
@@ -98,8 +100,8 @@ class _TestCardWidgetState extends State<TestCardWidget> {
                           ),
                         ),
                         Text(
-                          "₹ 600",
-                          style: TextStyle(
+                          widget.test.offerPrice.toString(),
+                          style: const TextStyle(
                             color: AppTheme.primaryColor,
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
