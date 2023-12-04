@@ -13,4 +13,7 @@ class CartUseCase {
 
   Future<Either<Failure, TestEntity>> addTestToCart(TestEntity test) async =>
       _repository.addTestToCart(test);
+
+  Future<Either<Failure, TestEntity>> scheduleTest() async =>
+      _repository.scheduleTest();
 }

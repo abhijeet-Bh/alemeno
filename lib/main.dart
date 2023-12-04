@@ -33,7 +33,10 @@ class MyApp extends StatelessWidget {
               ],
               child: const HomePage(),
             ),
-        CartView.routeName: (_) => const CartView(),
+        CartView.routeName: (_) => BlocProvider(
+              create: (context) => CartBloc(),
+              child: const CartView(),
+            ),
         DateTimeView.routeName: (_) => const DateTimeView(),
       },
     );

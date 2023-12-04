@@ -16,6 +16,18 @@ class AddingTestState extends CartState {
   List<Object> get props => [testId];
 }
 
+class SchedulingTestState extends CartState {
+  @override
+  List<Object> get props => [];
+}
+
+class SchedulingTestSuccessState extends CartState {
+  final TestEntity test;
+  const SchedulingTestSuccessState(this.test);
+  @override
+  List<Object> get props => [];
+}
+
 class AddingTestFailureState extends CartState {
   @override
   List<Object> get props => [];

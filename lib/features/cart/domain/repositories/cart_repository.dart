@@ -7,4 +7,5 @@ abstract class CartRepository {
   const CartRepository();
 
   Future<Either<Failure, TestEntity>> addTestToCart(TestEntity test);
+  Future<Either<Failure, TestEntity>> scheduleTest();
 }

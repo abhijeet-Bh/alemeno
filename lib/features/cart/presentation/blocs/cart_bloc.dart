@@ -20,5 +20,17 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         (r) => emit(AddedTestState(r.id)),
       );
     });
+
+    //Schedule test Event
+    on<ScheduleTestEvent>((event, emit) async {
+      emit(SchedulingTestState());
+      var schedule = await cartUseCase.scheduleTest();
+      emit(CartInitial());
+
+      schedule.fold(
+        (l) => emit(AddingTestFailureState()),
+        (r) => emit(SchedulingTestSuccessState(r)),
+      );
+    });
   }
 }

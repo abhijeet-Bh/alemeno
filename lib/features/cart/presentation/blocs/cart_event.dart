@@ -10,3 +10,8 @@ class AddTestToCartEvent extends CartEvent {
   @override
   List<Object> get props => [test];
 }
+
+class ScheduleTestEvent extends CartEvent {
+  @override
+  List<Object> get props => [];
+}

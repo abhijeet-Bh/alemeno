@@ -5,4 +5,5 @@ class Assets {
   static const deleteIcon = "assets/icons/delete_icon.svg";
   static const shareIcon = "assets/icons/share_icon.svg";
   static const calenderIcon = "assets/icons/calender_icon.svg";
+  static const scheduledIcon = "assets/icons/scheduled_icon.svg";
 }

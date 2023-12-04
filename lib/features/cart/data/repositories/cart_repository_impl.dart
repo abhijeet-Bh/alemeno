@@ -16,4 +16,14 @@ class CartRepositoryIml extends CartRepository {
 
     return Right(test);
   }
+
+  @override
+  Future<Either<Failure, TestEntity>> scheduleTest() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    TestEntity test = cartService.getTest;
+    cartService.emptyCart();
+
+    return Right(test);
+  }
 }

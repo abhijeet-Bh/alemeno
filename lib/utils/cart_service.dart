@@ -33,8 +33,30 @@ class CartService {
     this.test = test;
   }
 
+  void emptyCart() {
+    date = null;
+    time = null;
+    test = null;
+  }
+
   //getters
   get getDate => date;
   get getTime => time;
   get getTest => test;
+
+  bool isCartEmpty() {
+    if (test == null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool isDateTimeEmpty() {
+    if (date == null || time == null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
