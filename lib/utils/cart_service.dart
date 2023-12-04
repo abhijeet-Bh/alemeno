@@ -1,3 +1,5 @@
+import 'package:alemeno/features/home/domain/entities/test_entity.dart';
+
 class CartService {
   // Private constructor to prevent direct instantiation
   CartService._();
@@ -13,6 +15,7 @@ class CartService {
   //variables
   String? date;
   String? time;
+  TestEntity? test;
 
   // User information
   void setCurrentUser() {}
@@ -26,7 +29,12 @@ class CartService {
     this.date = date;
   }
 
+  void setTest(TestEntity test) {
+    this.test = test;
+  }
+
   //getters
   get getDate => date;
   get getTime => time;
+  get getTest => test;
 }

@@ -1,10 +1,12 @@
 import 'package:alemeno/features/cart/presentation/views/date_time_view.dart';
+import 'package:alemeno/features/home/domain/entities/test_entity.dart';
 import 'package:alemeno/utils/cart_service.dart';
 import 'package:alemeno/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../utils/assets.dart';
+import '../widgets/cart_test_widget.dart';
 
 class CartView extends StatefulWidget {
   static String routeName = 'cart=page';
@@ -30,6 +32,7 @@ class _CartViewState extends State<CartView> {
 
   @override
   Widget build(BuildContext context) {
+    TestEntity test = _cartService.getTest;
     return Scaffold(
       appBar: AppBar(
         title: const Text("My Cart"),
@@ -61,178 +64,8 @@ class _CartViewState extends State<CartView> {
                     const SizedBox(
                       height: 14,
                     ),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 185,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 39,
-                            decoration: const BoxDecoration(
-                              color: AppTheme.blueColor,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(8),
-                                topRight: Radius.circular(8),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Thyroid Profile",
-                                style: AppTheme.primaryBodyTextLarge.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(8),
-                                  bottomRight: Radius.circular(8),
-                                ),
-                                border: Border.all(
-                                  color:
-                                      const Color.fromARGB(255, 209, 209, 209),
-                                  width: 0.5,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 26,
-                                  right: 26,
-                                  top: 6,
-                                  bottom: 11,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            "Thyroid Profile",
-                                            style: TextStyle(
-                                              color: AppTheme.primaryColor,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              "₹ 2000/-",
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                                color: AppTheme.accentColor,
-                                              ),
-                                            ),
-                                            Text(
-                                              "1400",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 11,
-                                                decoration:
-                                                    TextDecoration.lineThrough,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Container(
-                                      height: 34,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: AppTheme.primaryColor,
-                                            width: 2,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(50)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            SvgPicture.asset(Assets.deleteIcon),
-                                            const SizedBox(
-                                              width: 16,
-                                            ),
-                                            Text(
-                                              "Remove",
-                                              style: AppTheme
-                                                  .primaryBodyTextLargeBlue
-                                                  .copyWith(
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Container(
-                                      height: 34,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: AppTheme.primaryColor,
-                                            width: 2,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(50)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            SvgPicture.asset(Assets.shareIcon),
-                                            const SizedBox(
-                                              width: 16,
-                                            ),
-                                            Text(
-                                              "Upload prescription (optional)",
-                                              style: AppTheme
-                                                  .primaryBodyTextLargeBlue
-                                                  .copyWith(
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                    CartTestCard(
+                      test: test,
                     ),
                     const SizedBox(
                       height: 17,
@@ -303,20 +136,20 @@ class _CartViewState extends State<CartView> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Row(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Expanded(
+                                const Expanded(
                                   child: Text(
                                     "M.R.P Total",
                                     style: AppTheme.primaryBodyTextSmallBlue,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 Text(
-                                  "1400",
+                                  test.offerPrice.toString(),
                                   style: AppTheme.primaryBodyTextSmallBlue,
                                 ),
                               ],
@@ -359,7 +192,7 @@ class _CartViewState extends State<CartView> {
                                   width: 5,
                                 ),
                                 Text(
-                                  "₹ 1000/-",
+                                  "${(test.offerPrice) - 400}",
                                   style: AppTheme.primaryHeadingTextSmall
                                       .copyWith(fontSize: 14),
                                 ),

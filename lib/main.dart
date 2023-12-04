@@ -1,3 +1,4 @@
+import 'package:alemeno/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:alemeno/features/cart/presentation/views/cart_view.dart';
 import 'package:alemeno/features/cart/presentation/views/date_time_view.dart';
 import 'package:alemeno/features/home/presentation/blocs/home_bloc.dart';
@@ -21,8 +22,15 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       initialRoute: HomePage.routeName,
       routes: {
-        HomePage.routeName: (_) => BlocProvider(
-              create: (context) => HomeBloc(),
+        HomePage.routeName: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => HomeBloc(),
+                ),
+                BlocProvider(
+                  create: (context) => CartBloc(),
+                ),
+              ],
               child: const HomePage(),
             ),
         CartView.routeName: (_) => const CartView(),

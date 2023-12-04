@@ -1,5 +1,7 @@
+import 'package:alemeno/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:alemeno/features/home/domain/entities/test_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../utils/assets.dart';
@@ -7,6 +9,7 @@ import '../../../../utils/theme.dart';
 
 class TestCardWidget extends StatefulWidget {
   final TestEntity test;
+
   const TestCardWidget({super.key, required this.test});
 
   @override
@@ -112,16 +115,25 @@ class _TestCardWidgetState extends State<TestCardWidget> {
                     const SizedBox(
                       height: 5,
                     ),
-                    InkWell(
-                      child: btns[btnIndex],
-                      onTap: () {
-                        setState(() {
-                          if (btnIndex <= 1) {
-                            btnIndex++;
-                          } else {
-                            btnIndex = 0;
-                          }
-                        });
+                    BlocBuilder<CartBloc, CartState>(
+                      builder: (context, state) {
+                        if ((state is AddingTestState) &&
+                            (state.testId == widget.test.id)) {
+                          return btns[1];
+                        } else if ((state is AddedTestState) &&
+                            (state.testId == widget.test.id)) {
+                          return btns[2];
+                        } else {
+                          return InkWell(
+                            child: btns[btnIndex],
+                            onTap: () {
+                              setState(() {
+                                BlocProvider.of<CartBloc>(context)
+                                    .add(AddTestToCartEvent(widget.test));
+                              });
+                            },
+                          );
+                        }
                       },
                     ),
                     const SizedBox(
