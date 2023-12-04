@@ -8,12 +8,15 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartUseCase cartUseCase = CartUseCase();
+  // CartUseCase cartUseCase = CartUseCase();
+  final CartUseCase _cartUseCase;
 
-  CartBloc() : super(CartInitial()) {
+  CartBloc({required CartUseCase cartUseCase})
+      : _cartUseCase = cartUseCase,
+        super(CartInitial()) {
     on<AddTestToCartEvent>((event, emit) async {
       emit(AddingTestState(event.test.id));
-      var cart = await cartUseCase.addTestToCart(event.test);
+      var cart = await _cartUseCase.addTestToCart(event.test);
 
       cart.fold(
         (l) => emit(AddingTestFailureState()),
@@ -24,7 +27,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     //Schedule test Event
     on<ScheduleTestEvent>((event, emit) async {
       emit(SchedulingTestState());
-      var schedule = await cartUseCase.scheduleTest();
+      var schedule = await _cartUseCase.scheduleTest();
       emit(CartInitial());
 
       schedule.fold(
